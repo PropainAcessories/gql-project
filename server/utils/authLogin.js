@@ -1,6 +1,7 @@
 const { AuthenticationError } = require('apollo-server');
 const jwt = require('jsonwebtoken');
 const { SECRET } = require('./config');
+const expiration = require('./config');
 
 const authLogin = (context) => {
     const token = context.req.headers.authorization;
@@ -17,4 +18,10 @@ const authLogin = (context) => {
     }
 };
 
-module.exports = authLogin;
+const signToken = (_id) => {
+    const payload = { _id };
+
+    return jwt.sign({ data: payload}, SECRET, { expiresIn: expiration})
+}
+
+module.exports = {authLogin, signToken};
