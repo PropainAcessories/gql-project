@@ -18,16 +18,24 @@ const typeDefs = gql`
     firstName: String!
     lastName: String!
     email: String!
+    displayName: String!
+    password: String!
     role: RoleType
   }
 
+  type UserList {
+    _id: ID!
+    displayName: String!
+  }
 
   type Query {
-
+    getUser(_id: ID!): User!
+    getAllUsers: [UserList]!
   }
 
   type Mutation {
-    
+    register(email: String!, password: String!): LoggedUser!
+    login(email: String!, password: String!): LoggedUser!
   }
 `;
 
