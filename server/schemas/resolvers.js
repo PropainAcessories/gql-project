@@ -5,10 +5,19 @@ const { AuthenticationError } = require('apollo-server-express');
 
 const resolvers = {
   Query: {
-    getUser: async (parent, { _id }, context) => {
-            const user = await User.findById(_id);
+    getUser: async (parent, _id, context) => {
+      if (context.user) {
+        const user = await User.findById({ _id: context.user._id });
 
-            return user;
+        return user;
+      }
+
+      throw new AuthenticationError('Must be logged in to view profile.')
+    },
+    getAllUsers: async (parent, args) => {
+      const allUsers = await User.find({}).select('displayName email role');
+
+      return allUsers;
     }
   },
   Mutation: {

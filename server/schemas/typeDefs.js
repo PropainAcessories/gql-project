@@ -26,6 +26,8 @@ const typeDefs = gql`
   type UserList {
     _id: ID!
     displayName: String!
+    email: String!
+    role: String!
   }
 
   type Query {
