@@ -7,9 +7,8 @@ const resolvers = {
   Query: {
     getUser: async (parent, _id, context) => {
       const loggedIn = authLogin(context);
-
       if (loggedIn) {
-        const user = await User.findById({ _id: context.user._id });
+        const user = await User.findById(loggedIn._id);
 
         return user;
       } else {
