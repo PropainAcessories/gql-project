@@ -44,7 +44,12 @@ const resolvers = {
 
         const token = signToken(user);
 
-        return { token, user };
+        return {
+          _id: user._id,
+          email: user.email,
+          role: user.role,
+          token,
+        };
     }
   }
 };

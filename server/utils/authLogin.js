@@ -11,17 +11,17 @@ const authLogin = (context) => {
     }
 
     try {
-        const decodedUser = jwt.verify(token, SECRET);
+        const decodedUser = jwt.verify(token, SECRET,  { maxAge: expiration });
         return decodedUser;
     } catch (err) {
         throw new AuthenticationError(err)
     }
 };
 
-const signToken = (_id) => {
+const signToken = ({ _id, email, role }) => {
     const payload = { _id, email, role };
 
-    return jwt.sign({ data: payload}, SECRET, { expiresIn: expiration})
+    return jwt.sign({ data: payload }, SECRET, { expiresIn: expiration})
 }
 
 module.exports = {authLogin, signToken};

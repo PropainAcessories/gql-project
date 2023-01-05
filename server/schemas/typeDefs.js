@@ -9,8 +9,8 @@ const typeDefs = gql`
   type LoggedUser {
     _id: ID!
     email: String!
-    token: String!
     role: RoleType!
+    token: String!
   }
 
   type User {
