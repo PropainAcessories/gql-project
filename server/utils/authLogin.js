@@ -1,7 +1,7 @@
 const { AuthenticationError } = require('apollo-server-express');
 const jwt = require('jsonwebtoken');
-const { SECRET } = require('./config');
-const expiration = require('./config');
+const SECRET= "3000 Black Jets of Allah";
+const expiration = "30d";
 
 const authLogin = (context) => {
     const token = context.req.headers.authorization;
@@ -19,7 +19,7 @@ const authLogin = (context) => {
 };
 
 const signToken = (_id) => {
-    const payload = { _id };
+    const payload = { _id, email, role };
 
     return jwt.sign({ data: payload}, SECRET, { expiresIn: expiration})
 }
