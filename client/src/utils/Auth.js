@@ -26,6 +26,7 @@ class AuthService {
   loadUser() {
     JSON.parse(localStorage.getItem('id_token'));
   }
+  
   logout() {
     localStorage.removeItem('id_token');
 
