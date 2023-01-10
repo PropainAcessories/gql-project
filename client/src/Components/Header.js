@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-    HashRouter as Router,
-    Switch,
+    BrowserRouter as Router,
+    Routes,
     Route,
 } from 'react-router-dom';
 import Navbar from './Navbar';
@@ -14,20 +14,20 @@ function Header() {
     return (
         <Router>
             <Navbar />
-            <Switch>
-                <Route path='/'>
-                    <Home />
-                </Route>
-                <Route path='login'>
-                    <Login />
-                </Route>
-                <Route path='/register'>
-                    <SignUp />
-                </Route>
-                <Route path='/user/:id'>
-                    <Profile />
-                </Route>
-            </Switch>
+            <Routes>
+                <Route path='/'
+                element={<Home/>}
+                />
+                <Route path='login'
+                element={<Login/>}
+                />
+                <Route path='/register'
+                element={<SignUp/>}
+                />
+                <Route path='/user/:id'
+                element={<Profile/>}
+                />
+            </Routes>
         </Router>
     )
 };

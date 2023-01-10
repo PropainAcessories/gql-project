@@ -2,8 +2,8 @@
   "name": "gql-project",
   "version": "1.0.0",
   "engines": {
-    "node": "18.12.1",
-    "npm": "8.19.2"
+    "node": "18.13.0",
+    "npm": "8.19.3"
   },
   "description": "",
   "main": "index.js",
@@ -11,7 +11,7 @@
     "concurrently": "^5.1.0"
   },
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node server --ignore client",
     "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
     "install": "cd server && npm i && cd ../client && npm i",
     "seed": "cd server && npm run seed",
